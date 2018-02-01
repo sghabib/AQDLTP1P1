@@ -8,7 +8,19 @@ public class CV {
 	private String[] comp;
 	private String attentes;
 	
-	public void CV(String nom, String prenom, String formation, int exp, String[] comp, String attentes) {
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+		
+		System.out.println("Bienvenue chez Barette!");
+		
+		CV remy = new CV ("Fortier","Rémy","DEC en informatique",2,new String[]{"Java","C++","C","C#"}, "Avoir au moins 99,99%");
+		CV fred = new CV ("Sylvain","Fred","DEC en informatique",2,new String[]{"Java","C++"}, "Passé le cour");
+	
+		remy.affiche();
+		fred.affiche();
+	}
+	
+	public CV(String nom, String prenom, String formation, int exp, String[] comp, String attentes) {
 		this.nom = nom;
 		this.prenom = prenom;
 		this.formation = formation;
