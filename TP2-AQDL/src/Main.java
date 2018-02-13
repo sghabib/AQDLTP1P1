@@ -10,7 +10,7 @@ public class Main {
 	public void main(String[] args) {
 		boolean test;
 		String[] texte;
-		texte = LectureVerification();
+		texte = new Lecture();
 		tabClient = new NomClient[Integer.parseInt(texte[texte.length-3])];
 		tabPlat = new Plats[Integer.parseInt(texte[texte.length-2])];
 		tabCommande = new Commande[Integer.parseInt(texte[texte.length-1])];
@@ -26,10 +26,13 @@ public class Main {
 	
 	private void afficherFacture() {
 		double[] prix = new double[tabClient.length];
+		//indice client
 		for(int i=0;i<tabClient.length;i++){
 			prix[i]=0;
+			//indice commande
 			for(int j=0;j<tabCommande.length;j++){
 			if(tabClient[i].getNom() == tabCommande[j].getNom()){
+				//indice plats
 				for(int x = 0; x<tabPlat.length;x++){
 					if(tabPlat[x].getPlat() == tabCommande[j].getPlat()){
 						prix[i]= (tabPlat[x].getPrix() * tabCommande[j].getQuantite());
