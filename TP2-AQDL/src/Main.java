@@ -1,16 +1,18 @@
+import java.io.IOException;
+
 
 public class Main {
 	
-	public String erreur ="Le fichier ne respecta pas le format demandé !";
-	public NomClient[] tabClient;
-	public Plats[] tabPlat;
-	public Commande[] tabCommande;
+	public static String erreur ="Le fichier ne respecta pas le format demandé !";
+	public static NomClient[] tabClient;
+	public static Plats[] tabPlat;
+	public static Commande[] tabCommande;
 	
 	
-	public void main(String[] args) {
+	public static void main(String[] args) throws IOException {
 		boolean test;
 		String[] texte;
-		texte = new Lecture();
+		texte = Lecture.lectureFichier();
 		tabClient = new NomClient[Integer.parseInt(texte[texte.length-3])];
 		tabPlat = new Plats[Integer.parseInt(texte[texte.length-2])];
 		tabCommande = new Commande[Integer.parseInt(texte[texte.length-1])];
@@ -24,7 +26,7 @@ public class Main {
 		
 	}
 	
-	private void afficherFacture() {
+	private static void afficherFacture() {
 		double[] prix = new double[tabClient.length];
 		//indice client
 		for(int i=0;i<tabClient.length;i++){
@@ -47,26 +49,26 @@ public class Main {
 		
 	}
 
-	public boolean Verifier(String[] texte){
+	public static boolean Verifier(String[] texte){
 	int indiceTexte=0;
 	int indiceTab=0;
 	String[] plat;
 	
 	boolean test=true;
-		if(texte[indiceTexte++] != "Clients :"){
+		if(!texte[indiceTexte++].equals("Clients :")){
 			test=false;	
 		}else{
-			while(texte[indiceTexte]!= "Plats :"){
-			tabClient[indiceTab++].setNom(texte[indiceTexte++]);		
+			while(!texte[indiceTexte].equals("Plats :")){
+			tabClient[indiceTab++].setNom(texte[indiceTexte++]);
 	}
 		indiceTab = 0;
-		while(texte[indiceTexte]!= "Commandes :"){ //Verifier le String
+		while(!texte[indiceTexte].equals("Commandes :")){ //Verifier le String
 			plat = texte[indiceTexte++].split(" ");
 			tabPlat[indiceTab].setPlat(plat[0]);
 			tabPlat[indiceTab].setPrix(Double.parseDouble(plat[1]));
 	}
 		indiceTab = 0;
-		while(texte[indiceTexte]!= "Fin"){
+		while(!texte[indiceTexte].equals("Fin")){
 			plat=texte[indiceTexte++].split(" ");
 			if(plat.length!=3){
 			for(int i=0;i<tabClient.length;i++ ){

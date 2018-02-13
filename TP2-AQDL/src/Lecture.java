@@ -5,19 +5,18 @@ import outilsjava.OutilsFichier;
 
 public class Lecture {
 	
-	String nomFichier;
-	String ligne;
-	BufferedReader ficLecture;
-	String[] lignesFichier;
-	int grosseur;
-	int[] nbChaque = new int[3];
-	int compteur = 0;
+	static String nomFichier;
+	static String ligne;
+	static BufferedReader ficLecture;
+	static String[] lignesFichier;
+	static int grosseur;
+	static int[] nbChaque = new int[3];
+	static int compteur = 0;
 	
 	public Lecture() throws IOException {
-		lectureFichier();
 	}
 	
-	public String[] lectureFichier() throws IOException {
+	public static String[] lectureFichier() throws IOException {
 		nbChaque[0] = -1;
 		nbChaque[1] = -1;
 		nbChaque[2] = -1;
@@ -48,13 +47,13 @@ public class Lecture {
 			
 			}
 			
-			if (ligne == "Clients :") {
+			if (ligne.equals("Clients :")) {
 				compteur = 1;
-			} else if (ligne == "Plats :") {
+			} else if (ligne.equals("Plats :")) {
 				compteur = 2;
-			} else if (ligne == "Commandes :") {
+			} else if (ligne.equals("Commandes :")) {
 				compteur = 3;
-			} else if (ligne == "Fin") {
+			} else if (ligne.equals("Fin")) {
 				compteur = 4;
 			}
 			
@@ -68,7 +67,7 @@ public class Lecture {
 		return lignesFichier;
 	}
 	
-	public int getGrosseurFichier(BufferedReader ficLecture) throws IOException {
+	public static int getGrosseurFichier(BufferedReader ficLecture) throws IOException {
 		
 		int i = 0;
 		
