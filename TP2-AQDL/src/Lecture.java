@@ -17,23 +17,25 @@ public class Lecture {
 	}
 	
 	public static String[] lectureFichier() throws IOException {
+		
 		nbChaque[0] = -1;
 		nbChaque[1] = -1;
 		nbChaque[2] = -1;
 		
-		nomFichier = OutilsFichier.lireNomFichier("Entrez le nom du fichier de commandes: ");
-		ficLecture = OutilsFichier.ouvrirFicTexteLecture(nomFichier);
+		nomFichier = OutilsFichier.lireNomFichier( "Entrez le nom du fichier de commandes: " );
+		ficLecture = OutilsFichier.ouvrirFicTexteLecture( nomFichier );
 		
-		grosseur = getGrosseurFichier(ficLecture);
+		grosseur = getGrosseurFichier( ficLecture );
 		lignesFichier = new String[grosseur+3];
 		
-		OutilsFichier.fermerFicTexteLecture(ficLecture, nomFichier);
-		ficLecture = OutilsFichier.ouvrirFicTexteLecture(nomFichier);
+		OutilsFichier.fermerFicTexteLecture( ficLecture, nomFichier );
+		ficLecture = OutilsFichier.ouvrirFicTexteLecture( nomFichier );
 		
-		for (int i=0; (ligne = ficLecture.readLine()) != null ;i++) {
+		for ( int i = 0;( ligne = ficLecture.readLine() ) != null ;i++ ){
+			
 			lignesFichier[i] = ligne;
 			
-			switch (compteur) {
+			switch ( compteur ) {
 				
 			case 1:
 				nbChaque[0]++;
@@ -44,20 +46,25 @@ public class Lecture {
 			case 3:
 				nbChaque[2]++;
 				break;
-			
 			}
 			
-			if (ligne.equals("Clients :")) {
+			if ( ligne.equals( "Clients :" ) ){
+				
 				compteur = 1;
-			} else if (ligne.equals("Plats :")) {
+				
+			} else if ( ligne.equals( "Plats :" ) ){
+				
 				compteur = 2;
-			} else if (ligne.equals("Commandes :")) {
+				
+			} else if ( ligne.equals( "Commandes :" ) ){
+				
 				compteur = 3;
-			} else if (ligne.equals("Fin")) {
+				
+			} else if ( ligne.equals( "Fin" ) ){
+				
 				compteur = 4;
+				
 			}
-			
-			
 		}
 		
 		lignesFichier[lignesFichier.length-3] = "" + nbChaque[0];
@@ -71,13 +78,12 @@ public class Lecture {
 		
 		int i = 0;
 		
-		
-		while ((ligne = ficLecture.readLine()) != null) {
+		while ( (ligne = ficLecture.readLine()) != null ){
+			
 			i++;
+			
 		}
 		
-		
 		return i;
-		
 	}
 }
