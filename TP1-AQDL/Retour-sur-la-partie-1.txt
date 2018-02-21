@@ -1,0 +1,6 @@
+Les commits devraient se faire sur la branche branche-cv pas sur la master.
+Je ne veux pas avoir les versions finales copiées et poussées vers github. 
+L'objectif c'est d'utiliser git et github pour gérer le suivi de vos modifications et des conflits.
+
+Bon travail
+Merci
